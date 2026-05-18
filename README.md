@@ -5,9 +5,6 @@
 
 ##  Giao Diện Ứng Dụng
 
-<p align="center">
-  <img src="path_to_your_image/image_6d7d12.png" width="300" alt="Giao diện Trang Chủ"/>
-</p>
 
 ---
 
