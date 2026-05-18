@@ -13,10 +13,9 @@
 ### 1. Màn Hình Chính (Trang Chủ)
 * **Phân loại danh mục (Categories):** Hiển thị danh mục trực quan bằng hình ảnh: *Rau củ, Hoa quả, Thịt, Đồ ăn*.
 * **Danh sách sản phẩm bán chạy (Best Sellers):** Phân chia sản phẩm theo các mục tiêu dùng nhiều nhất dựa trên danh mục:
-    * Những loại rau củ mua nhiều nhất (Màu xanh lá)
-    * Những loại hoa quả mua nhiều nhất (Màu xanh dương)
-    * Những loại thịt mua nhiều nhất (Màu cam)
-    * Những loại đồ ăn mua nhiều nhất (Màu đỏ hồng)
+    * Những loại rau củ, hoa quả mua nhiều nhất 
+    * Những loại thịt mua nhiều nhất 
+    * Những loại đồ ăn mua nhiều nhất
 * **Thanh điều hướng nhanh (Bottom Navigation Bar):** Chuyển đổi linh hoạt giữa 4 tab: *Trang chủ, Ưu đãi, Đơn hàng, Cá nhân*.
 
 ### 2. Quản Lý Giỏ Hàng & Tương Tác
