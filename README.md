@@ -7,6 +7,7 @@
 ## Giao Diện Ứng Dụng
 
 ---
+<img width="368" height="779" alt="image" src="https://github.com/user-attachments/assets/ab4d9e8d-42e9-4c40-9b88-13e31026755a" />
 
 ## Tính Năng Nổi Bật
 
@@ -30,7 +31,7 @@
 ## Công Nghệ & Thư Viện Sử Dụng
 
 - **IDE:** Android Studio (Java)
-- **UI Components:** \* `ConstraintLayout`, `LinearLayout` để thiết kế giao diện scannable, tối ưu.
+- **UI Components:** \* `ConstraintLayout`, `LinearLayout`, `coordinatorlayout` để thiết kế giao diện scannable, tối ưu.
   - `RecyclerView` & `CardView` để hiển thị danh sách sản phẩm mượt mà.
   - `BottomNavigationView` cho thanh menu phía dưới.
 - \*\*Database/Backend
