@@ -31,7 +31,7 @@
 ## Công Nghệ & Thư Viện Sử Dụng
 
 - **IDE:** Android Studio (Java)
-- **UI Components:** \* `ConstraintLayout`, `LinearLayout` để thiết kế giao diện scannable, tối ưu.
+- **UI Components:** \* `ConstraintLayout`, `LinearLayout`, `coordinatorlayout` để thiết kế giao diện scannable, tối ưu.
   - `RecyclerView` & `CardView` để hiển thị danh sách sản phẩm mượt mà.
   - `BottomNavigationView` cho thanh menu phía dưới.
 - \*\*Database/Backend
