@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView; // Import thêm ImageView
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast; // Dùng nếu muốn test nhanh sự kiện click
 import androidx.appcompat.app.AppCompatActivity;
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         setupRecyclerViews();
         setupBottomNavigation();
         setupHeaderClicks();
+        setupCategoryClicks();
     }
 
     private void initViews() {
@@ -73,7 +75,19 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this, "Bạn vừa bấm giỏ hàng", Toast.LENGTH_SHORT).show();
         });
     }
+    private void setupCategoryClicks() {
+        // Ánh xạ các layout
+        LinearLayout layoutRauCu = findViewById(R.id.layoutRauCu);
+        LinearLayout layoutHoaQua = findViewById(R.id.layoutHoaQua);
+        LinearLayout layoutThit = findViewById(R.id.layoutThit);
+        LinearLayout layoutDoAn = findViewById(R.id.layoutDoAn);
 
+        // Sự kiện click
+        layoutRauCu.setOnClickListener(v -> Toast.makeText(this, "Bạn vừa click vào gian hàng Rau, củ", Toast.LENGTH_SHORT).show());
+        layoutHoaQua.setOnClickListener(v -> Toast.makeText(this, "Bạn vừa click vào gian hàng Hoa quả", Toast.LENGTH_SHORT).show());
+        layoutThit.setOnClickListener(v -> Toast.makeText(this, "Bạn vừa click vào gian hàng Thịt", Toast.LENGTH_SHORT).show());
+        layoutDoAn.setOnClickListener(v -> Toast.makeText(this, "Bạn vừa click vào gian hàng Đồ ăn", Toast.LENGTH_SHORT).show());
+    }
     private void setupRecyclerViews() {
         LinearLayoutManager layoutManagerVeges = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         rcvVeges.setLayoutManager(layoutManagerVeges);
@@ -91,6 +105,17 @@ public class MainActivity extends AppCompatActivity {
     private void setupBottomNavigation() {
         bottomNavigation.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
+
+            if (id == R.id.nav_home) {
+                Toast.makeText(this, "Đang ở Trang chủ", Toast.LENGTH_SHORT).show();
+            } else if (id == R.id.nav_offers) {
+                Toast.makeText(this, "Mở danh sách Ưu đãi", Toast.LENGTH_SHORT).show();
+            } else if (id == R.id.nav_orders) {
+                Toast.makeText(this, "Xem lịch sử Đơn hàng", Toast.LENGTH_SHORT).show();
+            } else if (id == R.id.nav_profile) {
+                Toast.makeText(this, "Mở hồ sơ Cá nhân", Toast.LENGTH_SHORT).show();
+            }
+
             return true;
         });
     }
