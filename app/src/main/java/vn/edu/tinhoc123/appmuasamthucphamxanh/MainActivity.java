@@ -109,11 +109,19 @@ public class MainActivity extends AppCompatActivity {
     private void setupBottomNavigation() {
         bottomNavigation.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
-            if (id == R.id.nav_home) Toast.makeText(this, "Trang chủ", Toast.LENGTH_SHORT).show();
-            else if (id == R.id.nav_offers) Toast.makeText(this, "Ưu đãi", Toast.LENGTH_SHORT).show();
-            else if (id == R.id.nav_orders) Toast.makeText(this, "Đơn hàng", Toast.LENGTH_SHORT).show();
-            else if (id == R.id.nav_profile) Toast.makeText(this, "Hồ sơ", Toast.LENGTH_SHORT).show();
-            return true;
+
+            if (id == R.id.nav_home) {
+                return true;
+            } else if (id == R.id.nav_offers) {
+                Intent intent = new Intent(MainActivity.this, VoucherActivity.class);
+                startActivity(intent);
+                return true;
+            } else if (id == R.id.nav_orders) {
+                return true;
+            } else if (id == R.id.nav_profile) {
+                return true;
+            }
+            return false;
         });
     }
 

@@ -44,7 +44,6 @@ public class CategoryDetailActivity extends AppCompatActivity {
         rcv.setAdapter(adapter);
     }
 
-    // Sửa hàm cũ của bạn thành hàm lọc thông minh này
     private void loadDataByCategory(List<Product> list, String category) {
         List<Product> all = DataHelper.getInstance().getAllProducts();
 

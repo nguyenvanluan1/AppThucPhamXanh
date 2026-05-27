@@ -23,6 +23,9 @@ public class DataHelper {
 
             allProducts.add(new Product("Táo", "Hoa quả", "20.000đ", R.drawable.tao));
             allProducts.add(new Product("Nho", "Hoa quả", "30.000đ", R.drawable.nho));
+            allProducts.add(new Product("Chuối", "Hoa quả", "20.000đ", R.drawable.chuoi));
+            allProducts.add(new Product("Mận", "Hoa quả", "50.000đ", R.drawable.man));
+
 
             allProducts.add(new Product("Thịt bò", "Thịt, Cá", "150.000đ", R.drawable.thit));
             allProducts.add(new Product("Cá liệt", "Thịt, Cá", "50.000đ", R.drawable.caliet));

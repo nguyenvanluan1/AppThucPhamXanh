@@ -23,6 +23,7 @@
         <activity android:name=".CategoryDetailActivity" />
         <activity android:name=".CartActivity" />
         <activity android:name=".SearchActivity" />
+        <activity android:name=".VoucherActivity" />
     </application>
 
 </manifest>
