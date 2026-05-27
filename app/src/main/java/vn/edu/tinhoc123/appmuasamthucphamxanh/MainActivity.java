@@ -1,5 +1,6 @@
 package vn.edu.tinhoc123.appmuasamthucphamxanh;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -16,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
-
+    public static MainActivity instance;
     private Toolbar toolbar;
     private ImageView btnMenu;
     private ImageView btnSearch;
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        instance = this;
         setContentView(R.layout.activity_main);
 
         initViews();
@@ -72,21 +74,30 @@ public class MainActivity extends AppCompatActivity {
         });
 
         btnCart.setOnClickListener(v -> {
-            Toast.makeText(MainActivity.this, "Bạn vừa bấm giỏ hàng", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(MainActivity.this, CartActivity.class);
+            startActivity(intent);
         });
     }
     private void setupCategoryClicks() {
-        // Ánh xạ các layout
         LinearLayout layoutRauCu = findViewById(R.id.layoutRauCu);
         LinearLayout layoutHoaQua = findViewById(R.id.layoutHoaQua);
         LinearLayout layoutThit = findViewById(R.id.layoutThit);
         LinearLayout layoutDoAn = findViewById(R.id.layoutDoAn);
 
-        // Sự kiện click
-        layoutRauCu.setOnClickListener(v -> Toast.makeText(this, "Bạn vừa click vào gian hàng Rau, củ", Toast.LENGTH_SHORT).show());
-        layoutHoaQua.setOnClickListener(v -> Toast.makeText(this, "Bạn vừa click vào gian hàng Hoa quả", Toast.LENGTH_SHORT).show());
-        layoutThit.setOnClickListener(v -> Toast.makeText(this, "Bạn vừa click vào gian hàng Thịt", Toast.LENGTH_SHORT).show());
-        layoutDoAn.setOnClickListener(v -> Toast.makeText(this, "Bạn vừa click vào gian hàng Đồ ăn", Toast.LENGTH_SHORT).show());
+
+        layoutRauCu.setOnClickListener(v -> openCategoryDetail("Rau, củ"));
+        layoutHoaQua.setOnClickListener(v -> openCategoryDetail("Hoa quả"));
+        layoutThit.setOnClickListener(v -> openCategoryDetail("Thịt"));
+        layoutDoAn.setOnClickListener(v -> openCategoryDetail("Đồ ăn"));
+    }
+
+
+    private void openCategoryDetail(String categoryName) {
+        Toast.makeText(this, "Bạn vừa click vào gian hàng " + categoryName, Toast.LENGTH_SHORT).show();
+
+        Intent intent = new Intent(MainActivity.this, CategoryDetailActivity.class);
+        intent.putExtra("CATEGORY_NAME", categoryName);
+        startActivity(intent);
     }
     private void setupRecyclerViews() {
         LinearLayoutManager layoutManagerVeges = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
