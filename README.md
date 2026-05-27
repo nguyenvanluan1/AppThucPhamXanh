@@ -7,7 +7,17 @@
 ## Giao Diện Ứng Dụng
 
 ---
-<img width="363" height="780" alt="image" src="https://github.com/user-attachments/assets/460cb75a-a742-4869-a649-0330e9672001" />
+<img width="361" height="761" alt="image" src="https://github.com/user-attachments/assets/40b55dd0-1b93-42c2-b890-ac135597b1d2" />
+<img width="350" height="759" alt="image" src="https://github.com/user-attachments/assets/3e0af907-af7a-4de6-9043-8cdf5dee949a" />
+<img width="362" height="755" alt="image" src="https://github.com/user-attachments/assets/39056898-2ac9-45ea-9da8-233dbbccfc23" />
+<img width="357" height="760" alt="image" src="https://github.com/user-attachments/assets/704be5bd-b475-48af-83df-deefcd1f7d36" />
+<img width="360" height="754" alt="image" src="https://github.com/user-attachments/assets/8568c69d-0a37-4a23-ba6a-d8bc563e5f3c" />
+<img width="359" height="754" alt="image" src="https://github.com/user-attachments/assets/be33515d-3126-475b-a6fd-ad0fb3071eee" />
+<img width="355" height="761" alt="image" src="https://github.com/user-attachments/assets/07c93a76-3dba-4502-9d8b-30b9b4c4dc07" />
+
+
+
+
 
 ## Tính Năng Nổi Bật
 
