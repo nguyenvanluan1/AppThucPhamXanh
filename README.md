@@ -7,7 +7,7 @@
 ## Giao Diện Ứng Dụng
 
 ---
-<img width="368" height="779" alt="image" src="https://github.com/user-attachments/assets/ab4d9e8d-42e9-4c40-9b88-13e31026755a" />
+<img width="363" height="780" alt="image" src="https://github.com/user-attachments/assets/460cb75a-a742-4869-a649-0330e9672001" />
 
 ## Tính Năng Nổi Bật
 
