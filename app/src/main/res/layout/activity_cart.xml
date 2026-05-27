@@ -4,10 +4,39 @@
     android:layout_height="match_parent"
     android:padding="16dp">
 
+    <LinearLayout
+        android:id="@+id/headerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="12dp"
+            android:src="@drawable/ic_arrow_back"
+            android:contentDescription="Nút quay lại"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackgroundBorderless" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Giỏ hàng của tôi"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="10dp" />
+    </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcvCart"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/headerLayout"
+        android:layout_marginTop="10dp"
         android:layout_above="@+id/layoutBottom"
         android:layout_marginBottom="16dp" />
 
@@ -16,33 +45,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:orientation="vertical"
-        android:background="#FFFFFF">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/txtOffers"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Ưu đãi: Giảm 10.000đ"
-            android:textColor="#4CAF50"
-            android:padding="8dp" />
-
+            android:text="Ưu đãi: Giảm 10.000đ" />
         <TextView
             android:id="@+id/txtTotal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Tổng tiền: 0đ"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:padding="8dp" />
-
+            android:textStyle="bold" />
         <Button
             android:id="@+id/btnCheckout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="THANH TOÁN"
-            android:backgroundTint="#FF9800"
-            android:textColor="#FFFFFF" />
+            android:text="THANH TOÁN" />
     </LinearLayout>
 
 </RelativeLayout>

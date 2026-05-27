@@ -32,22 +32,26 @@ public class CategoryDetailActivity extends AppCompatActivity {
         List<Product> productList = new ArrayList<>();
         loadDataByCategory(productList, categoryName);
 
-        ProductAdapter adapter = new ProductAdapter(productList, product -> {
-            if (MainActivity.instance != null) {
-                MainActivity.instance.showAddToCartToast();
-            }
-            Toast.makeText(this, "Đã thêm " + product.getName() + " vào giỏ", Toast.LENGTH_SHORT).show();
-        });
+        ProductAdapter adapter = new ProductAdapter(
+                productList,
+                product -> {
+                    CartManager.getInstance().addProduct(product);
+                    Toast.makeText(this, "Đã thêm " + product.getName() + " vào giỏ", Toast.LENGTH_SHORT).show();
+                },
+                false,
+                null
+        );
         rcv.setAdapter(adapter);
     }
 
+    // Sửa hàm cũ của bạn thành hàm lọc thông minh này
     private void loadDataByCategory(List<Product> list, String category) {
-        if (category.equals("Rau, củ")) {
-            list.add(new Product("Cà rốt", "10.000đ", R.drawable.raucu));
-            list.add(new Product("Súp lơ", "15.000đ", R.drawable.raucu));
-        } else if (category.equals("Hoa quả")) {
-            list.add(new Product("Táo", "20.000đ", R.drawable.hoaqua));
-            list.add(new Product("Nho", "30.000đ", R.drawable.hoaqua));
+        List<Product> all = DataHelper.getInstance().getAllProducts();
+
+        for (Product p : all) {
+            if (p.getCategory().equals(category)) {
+                list.add(p);
+            }
         }
     }
 

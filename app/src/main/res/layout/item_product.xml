@@ -32,7 +32,15 @@
                 android:text="Tên sản phẩm"
                 android:textSize="16sp"
                 android:textStyle="bold" />
-
+            <TextView
+                android:id="@+id/txtQuantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="x1"
+                android:textSize="14sp"
+                android:textColor="#FF5722"
+                android:visibility="gone"
+                android:layout_marginTop="4dp" />
             <TextView
                 android:id="@+id/txtPrice"
                 android:layout_width="wrap_content"
