@@ -8,7 +8,9 @@
 
 ---
 <img width="361" height="761" alt="image" src="https://github.com/user-attachments/assets/40b55dd0-1b93-42c2-b890-ac135597b1d2" />
+## Giao Diện tìm kiếm
 <img width="350" height="759" alt="image" src="https://github.com/user-attachments/assets/3e0af907-af7a-4de6-9043-8cdf5dee949a" />
+## Giao Diện giỏ hàng
 <img width="362" height="755" alt="image" src="https://github.com/user-attachments/assets/39056898-2ac9-45ea-9da8-233dbbccfc23" />
 <img width="357" height="760" alt="image" src="https://github.com/user-attachments/assets/704be5bd-b475-48af-83df-deefcd1f7d36" />
 <img width="360" height="754" alt="image" src="https://github.com/user-attachments/assets/8568c69d-0a37-4a23-ba6a-d8bc563e5f3c" />
