@@ -3,6 +3,7 @@ package vn.edu.tinhoc123.appmuasamthucphamxanh;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -42,29 +43,61 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         holder.txtPrice.setText(product.getPrice());
         holder.imgProduct.setImageResource(product.getImageRes());
 
-        if (product.getQuantity() > 1) {
-            holder.txtQuantity.setText("x" + product.getQuantity());
-            holder.txtQuantity.setVisibility(View.VISIBLE);
-        } else {
-            holder.txtQuantity.setVisibility(View.GONE);
-        }
-
         if (isCartScreen) {
             holder.btnAddToCart.setVisibility(View.GONE);
             holder.btnDelete.setVisibility(View.VISIBLE);
+            holder.cbSelect.setVisibility(View.VISIBLE);
+            holder.btnIncrease.setVisibility(View.VISIBLE);
+            holder.btnDecrease.setVisibility(View.VISIBLE);
+            holder.txtQuantityDisplay.setVisibility(View.VISIBLE);
+            holder.txtQuantity.setVisibility(View.GONE);
+
+
+            holder.txtQuantityDisplay.setText(String.valueOf(product.getQuantity()));
+            holder.cbSelect.setOnCheckedChangeListener(null);
+            holder.cbSelect.setChecked(product.isSelected());
+            holder.cbSelect.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                product.setSelected(isChecked);
+                if (cartChangedListener != null) cartChangedListener.onCartChanged();
+            });
+
+            holder.btnIncrease.setOnClickListener(v -> {
+                product.setQuantity(product.getQuantity() + 1);
+                holder.txtQuantityDisplay.setText(String.valueOf(product.getQuantity()));
+                if (cartChangedListener != null) cartChangedListener.onCartChanged();
+            });
+
+            holder.btnDecrease.setOnClickListener(v -> {
+                if (product.getQuantity() > 1) {
+                    product.setQuantity(product.getQuantity() - 1);
+                    holder.txtQuantityDisplay.setText(String.valueOf(product.getQuantity()));
+                    if (cartChangedListener != null) cartChangedListener.onCartChanged();
+                }
+            });
+
 
             holder.btnDelete.setOnClickListener(v -> {
                 CartManager.getInstance().removeProduct(product);
                 notifyItemRemoved(position);
                 notifyItemRangeChanged(position, productList.size());
-
-                if (cartChangedListener != null) {
-                    cartChangedListener.onCartChanged();
-                }
+                if (cartChangedListener != null) cartChangedListener.onCartChanged();
             });
+
         } else {
             holder.btnDelete.setVisibility(View.GONE);
+            holder.cbSelect.setVisibility(View.GONE);
+            holder.btnIncrease.setVisibility(View.GONE);
+            holder.btnDecrease.setVisibility(View.GONE);
+            holder.txtQuantityDisplay.setVisibility(View.GONE);
             holder.btnAddToCart.setVisibility(View.VISIBLE);
+
+            if (product.getQuantity() > 1) {
+                holder.txtQuantity.setText("x" + product.getQuantity());
+                holder.txtQuantity.setVisibility(View.VISIBLE);
+            } else {
+                holder.txtQuantity.setVisibility(View.GONE);
+            }
+
             holder.btnAddToCart.setOnClickListener(v -> {
                 if (cartListener != null) cartListener.onAddToCart(product);
             });
@@ -79,6 +112,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imgProduct, btnAddToCart, btnDelete;
         TextView txtName, txtPrice, txtQuantity;
+        CheckBox cbSelect;
+        TextView txtQuantityDisplay;
+        ImageView btnIncrease, btnDecrease;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -88,6 +124,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             txtQuantity = itemView.findViewById(R.id.txtQuantity);
             btnAddToCart = itemView.findViewById(R.id.btnAddToCart);
             btnDelete = itemView.findViewById(R.id.btnDelete);
+            cbSelect = itemView.findViewById(R.id.cbSelect);
+            txtQuantityDisplay = itemView.findViewById(R.id.txtQuantityDisplay);
+            btnIncrease = itemView.findViewById(R.id.btnIncrease);
+            btnDecrease = itemView.findViewById(R.id.btnDecrease);
         }
     }
 }

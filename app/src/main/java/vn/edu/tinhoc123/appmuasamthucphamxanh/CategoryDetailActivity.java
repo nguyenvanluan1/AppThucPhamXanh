@@ -2,7 +2,6 @@ package vn.edu.tinhoc123.appmuasamthucphamxanh;
 
 import android.os.Bundle;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,6 +11,7 @@ import java.util.List;
 
 public class CategoryDetailActivity extends AppCompatActivity {
 
+    public static List<Product> mostPurchasedList = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,14 +23,25 @@ public class CategoryDetailActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setTitle(categoryName);
+            if (mostPurchasedList != null) {
+                getSupportActionBar().setTitle("Mua nhiều nhất");
+            } else {
+                getSupportActionBar().setTitle(categoryName);
+            }
         }
 
         RecyclerView rcv = findViewById(R.id.rcvCategoryProducts);
         rcv.setLayoutManager(new LinearLayoutManager(this));
 
         List<Product> productList = new ArrayList<>();
-        loadDataByCategory(productList, categoryName);
+        if (mostPurchasedList != null) {
+            productList.addAll(mostPurchasedList);
+            mostPurchasedList = null;
+        } else if (categoryName != null) {
+            loadDataByCategory(productList, categoryName);
+        } else {
+            productList.addAll(DataHelper.getInstance().getAllProducts());
+        }
 
         ProductAdapter adapter = new ProductAdapter(
                 productList,
@@ -46,9 +57,8 @@ public class CategoryDetailActivity extends AppCompatActivity {
 
     private void loadDataByCategory(List<Product> list, String category) {
         List<Product> all = DataHelper.getInstance().getAllProducts();
-
         for (Product p : all) {
-            if (p.getCategory().equals(category)) {
+            if (p.getCategory().equalsIgnoreCase(category)) {
                 list.add(p);
             }
         }

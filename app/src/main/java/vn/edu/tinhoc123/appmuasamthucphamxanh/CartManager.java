@@ -96,4 +96,14 @@ public class CartManager {
 
         return true;
     }
+    public void clearCart() {
+        cartItems.clear();
+        applyDiscount(0);
+    }
+    public void setCartItems(List<Product> newItems) {
+        this.cartItems = newItems;
+        if (listener != null) {
+            listener.onUpdate(cartItems.size());
+        }
+    }
 }

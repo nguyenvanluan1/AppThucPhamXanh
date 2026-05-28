@@ -209,9 +209,13 @@
             </LinearLayout>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/btnRauCuNhieuNhat"
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
                 android:layout_marginTop="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
                 app:cardCornerRadius="14dp"
                 app:cardElevation="2dp">
                 <TextView
@@ -234,9 +238,13 @@
                 android:layout_marginBottom="8dp" />
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/btnHoaQuaNhieuNhat"
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
                 android:layout_marginTop="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
                 app:cardCornerRadius="14dp"
                 app:cardElevation="2dp">
                 <TextView
@@ -259,9 +267,13 @@
                 android:layout_marginBottom="8dp" />
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/btnThitNhieuNhat"
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
                 android:layout_marginTop="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
                 app:cardCornerRadius="14dp"
                 app:cardElevation="2dp">
                 <TextView
@@ -284,9 +296,13 @@
                 android:layout_marginBottom="8dp" />
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/btnDoAnNhieuNhat"
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
                 android:layout_marginTop="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
                 app:cardCornerRadius="14dp"
                 app:cardElevation="2dp">
                 <TextView

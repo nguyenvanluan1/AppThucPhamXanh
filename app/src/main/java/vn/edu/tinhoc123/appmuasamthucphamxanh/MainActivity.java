@@ -6,7 +6,6 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +14,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     public static MainActivity instance;
@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         setupBottomNavigation();
         setupHeaderClicks();
         setupCategoryClicks();
+        setupMostPurchasedClicks();
     }
 
     @Override
@@ -65,6 +66,24 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void setupMostPurchasedClicks() {
+        findViewById(R.id.btnRauCuNhieuNhat).setOnClickListener(v -> handleMostPurchased("Rau, củ"));
+        findViewById(R.id.btnHoaQuaNhieuNhat).setOnClickListener(v -> handleMostPurchased("Hoa quả"));
+        findViewById(R.id.btnThitNhieuNhat).setOnClickListener(v -> handleMostPurchased("Thịt, Cá"));
+        findViewById(R.id.btnDoAnNhieuNhat).setOnClickListener(v -> handleMostPurchased("Đồ ăn"));
+    }
+
+    private void handleMostPurchased(String category) {
+        List<Product> listMost = OrderManager.getInstance().getMostPurchasedProductsByCategory(category);
+        if (listMost.isEmpty()) {
+            Toast.makeText(this, "Chưa có sản phẩm nào mua từ 3 lần trở lên!", Toast.LENGTH_SHORT).show();
+        } else {
+            Intent intent = new Intent(this, CategoryDetailActivity.class);
+            CategoryDetailActivity.mostPurchasedList = listMost;
+            startActivity(intent);
+        }
+    }
+
     private void updateCartBadge() {
         int count = CartManager.getInstance().getCartItems().size();
         if (txtCartBadge != null) {
@@ -79,10 +98,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupHeaderClicks() {
         btnMenu.setOnClickListener(v -> Toast.makeText(this, "Menu tùy chọn", Toast.LENGTH_SHORT).show());
-        btnSearch.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, SearchActivity.class);
-            startActivity(intent);
-        });
+        btnSearch.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, SearchActivity.class)));
         btnCart.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, CartActivity.class)));
     }
 
@@ -109,16 +125,13 @@ public class MainActivity extends AppCompatActivity {
     private void setupBottomNavigation() {
         bottomNavigation.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
-
-            if (id == R.id.nav_home) {
+            if (id == R.id.nav_home) return true;
+            if (id == R.id.nav_offers) {
+                startActivity(new Intent(MainActivity.this, VoucherActivity.class));
                 return true;
-            } else if (id == R.id.nav_offers) {
-                Intent intent = new Intent(MainActivity.this, VoucherActivity.class);
-                startActivity(intent);
-                return true;
-            } else if (id == R.id.nav_orders) {
-                return true;
-            } else if (id == R.id.nav_profile) {
+            }
+            if (id == R.id.nav_orders) {
+                startActivity(new Intent(MainActivity.this, OrderHistoryActivity.class));
                 return true;
             }
             return false;
@@ -127,7 +140,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void showAddToCartToast() {
         updateCartBadge();
-
         if (cardLayoutToast != null) {
             cardLayoutToast.setVisibility(View.VISIBLE);
             new Handler().postDelayed(() -> cardLayoutToast.setVisibility(View.GONE), 2000);
