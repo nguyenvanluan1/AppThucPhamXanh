@@ -9,7 +9,7 @@
 
 ## Giao Diện tìm kiếm
 ---
-<img width="350" height="759" alt="image" src="https://github.com/user-attachments/assets/3e0af907-af7a-4de6-9043-8cdf5dee949a" />
+<img width="367" height="754" alt="image" src="https://github.com/user-attachments/assets/9e427938-5fbe-4949-930a-f2076a7f233e" />
 
 ## Giao Diện giỏ hàng
 ---
