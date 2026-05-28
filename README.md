@@ -15,6 +15,9 @@
 ---
 <img width="358" height="758" alt="image" src="https://github.com/user-attachments/assets/ec5e9094-e04f-4ef3-9237-5d68565454ee" />
 
+---
+<img width="358" height="773" alt="image" src="https://github.com/user-attachments/assets/66ebc0cc-bc1a-408f-a0b8-a40aeb4cc73f" />
+
 ## Giao diện Rau, củ
 ---
 <img width="357" height="760" alt="image" src="https://github.com/user-attachments/assets/704be5bd-b475-48af-83df-deefcd1f7d36" />
@@ -37,7 +40,12 @@
 
 ## Giao diện Đơn Hàng
 ---
-<img width="363" height="758" alt="image" src="https://github.com/user-attachments/assets/21f0f30d-5839-4810-9486-642b12f55e80" />
+<img width="363" height="566" alt="image" src="https://github.com/user-attachments/assets/338a4e7c-0c36-4b2f-ac6c-30957662660d" />
+
+## Giao diện Chi tiết đơn hàng
+---
+<img width="355" height="762" alt="image" src="https://github.com/user-attachments/assets/8784f305-e1c1-4a89-8b04-f84a8b46add7" />
+
 
 ## Tính Năng Nổi Bật
 
