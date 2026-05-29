@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "642138715275",
+    "project_id": "appmuasamthucphamxanh",
+    "storage_bucket": "appmuasamthucphamxanh.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:642138715275:android:6f7f21cec857a3b704908e",
+        "android_client_info": {
+          "package_name": "vn.edu.tinhoc123.appmuasamthucphamxanh"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAS2s_lV9HI5Z-pq1puk-koszhvYwL6PuU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

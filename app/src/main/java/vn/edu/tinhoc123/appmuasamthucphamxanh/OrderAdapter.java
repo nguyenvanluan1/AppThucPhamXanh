@@ -28,11 +28,12 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
         holder.txtTotal.setText(String.format("%,dđ", (int)order.getTotalAmount()));
 
         holder.itemView.setOnClickListener(v -> {
-            android.content.Intent intent = new android.content.Intent(v.getContext(), OrderDetailActivity.class);
-
-            intent.putExtra("ORDER_DATA", (java.io.Serializable) order);
-
-            v.getContext().startActivity(intent);
+            String orderId = order.getOrderId();
+            if (orderId != null) {
+                android.content.Intent intent = new android.content.Intent(v.getContext(), OrderDetailActivity.class);
+                intent.putExtra("ORDER_ID", orderId);
+                v.getContext().startActivity(intent);
+            }
         });
     }
 

@@ -12,6 +12,9 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,8 +38,15 @@ public class CartActivity extends AppCompatActivity {
 
         btnBack.setOnClickListener(v -> finish());
         txtOffers.setOnClickListener(v -> showVoucherDialog());
-        btnCheckout.setOnClickListener(v -> handleCheckout());
 
+        btnCheckout.setOnClickListener(v -> {
+            if (com.google.firebase.auth.FirebaseAuth.getInstance().getCurrentUser() == null) {
+                Toast.makeText(this, "Vui lòng đăng nhập để đặt hàng!", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, LoginActivity.class));
+            } else {
+                handleCheckout();
+            }
+        });
         String voucherName = getIntent().getStringExtra("VOUCHER_NAME");
         if (voucherName != null) {
             checkAndApplyVoucher(voucherName);
@@ -140,40 +150,81 @@ public class CartActivity extends AppCompatActivity {
     }
 
     private void handleCheckout() {
-        List<Product> cartItems = CartManager.getInstance().getCartItems();
-        List<Product> itemsToBuy = new ArrayList<>();
-        List<Product> remainingItems = new ArrayList<>();
+        try {
+            android.util.Log.d("DEBUG_CHECKOUT", "Bắt đầu handleCheckout");
+            List<Product> cartItems = CartManager.getInstance().getCartItems();
+            if (cartItems == null || cartItems.isEmpty()) {
+                Toast.makeText(this, "Giỏ hàng trống!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            List<Product> itemsToBuy = new ArrayList<>();
+            List<Product> remainingItems = new ArrayList<>();
 
-        for (Product p : cartItems) {
-            if (p.isSelected()) itemsToBuy.add(p);
-            else remainingItems.add(p);
+            for (Product p : cartItems) {
+                if (p.isSelected()) itemsToBuy.add(p);
+                else remainingItems.add(p);
+            }
+
+            if (itemsToBuy.isEmpty()) {
+                Toast.makeText(this, "Vui lòng chọn ít nhất một sản phẩm!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            double subtotal = 0;
+            for (Product p : itemsToBuy) {
+                String priceStr = p.getPrice();
+                if (priceStr != null) {
+                    String priceClean = priceStr.replaceAll("[^0-9]", "");
+                    if (!priceClean.isEmpty()) {
+                        subtotal += Double.parseDouble(priceClean) * p.getQuantity();
+                    }
+                }
+            }
+            double finalTotal = Math.max(0, subtotal - CartManager.getInstance().getDiscount());
+
+            java.util.Map<String, Object> orderMap = new java.util.HashMap<>();
+            orderMap.put("orderId", OrderManager.getInstance().generateOrderId());
+            orderMap.put("status", "Đang xử lý");
+            orderMap.put("totalAmount", finalTotal);
+
+            java.util.Map<String, Product> itemsMap = new java.util.HashMap<>();
+            for (int i = 0; i < itemsToBuy.size(); i++) {
+                itemsMap.put("item_" + i, itemsToBuy.get(i));
+            }
+            orderMap.put("items", itemsMap);
+
+            String userId = FirebaseAuth.getInstance().getCurrentUser() != null
+                    ? FirebaseAuth.getInstance().getCurrentUser().getUid() : null;
+
+            if (userId == null) {
+                Toast.makeText(this, "Lỗi xác thực người dùng!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            FirebaseDatabase.getInstance("https://appmuasamthucphamxanh-default-rtdb.asia-southeast1.firebasedatabase.app")
+                    .getReference("Orders")
+                    .child(userId)
+                    .push()
+                    .setValue(orderMap)
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            CartManager.getInstance().setCartItems(remainingItems);
+                            CartManager.getInstance().applyDiscount(0);
+                            Toast.makeText(this, "Đặt hàng thành công!", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(this, OrderHistoryActivity.class));
+                            finish();
+                        } else {
+                            String error = task.getException() != null ? task.getException().getMessage() : "Lỗi không xác định";
+                            Toast.makeText(this, "Lỗi Firebase: " + error, Toast.LENGTH_LONG).show();
+                        }
+                    });
+
+        } catch (Exception e) {
+            Toast.makeText(this, "Lỗi hệ thống: " + e.getMessage(), Toast.LENGTH_LONG).show();
+            android.util.Log.e("DEBUG_CHECKOUT", "Lỗi crash: ", e);
         }
-
-        if (itemsToBuy.isEmpty()) {
-            Toast.makeText(this, "Vui lòng chọn ít nhất một sản phẩm để thanh toán!", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        double subtotal = 0;
-        for (Product p : itemsToBuy) {
-            subtotal += Double.parseDouble(p.getPrice().replaceAll("[^0-9]", "")) * p.getQuantity();
-        }
-
-        double finalTotal = Math.max(0, subtotal - CartManager.getInstance().getDiscount());
-        Order newOrder = new Order(
-                OrderManager.getInstance().generateOrderId(),
-                "Đang xử lý",
-                finalTotal,
-                itemsToBuy
-        );
-
-        OrderManager.getInstance().addOrder(newOrder);
-
-        CartManager.getInstance().setCartItems(remainingItems);
-        CartManager.getInstance().applyDiscount(0);
-        startActivity(new Intent(this, OrderHistoryActivity.class));
-        finish();
     }
+
     private double getSubtotal() {
         double total = 0;
         for (Product p : CartManager.getInstance().getCartItems()) {
@@ -239,7 +290,7 @@ public class CartActivity extends AppCompatActivity {
             for (Product p : selectedItems) {
                 String priceClean = p.getPrice().replaceAll("[^0-9]", "");
                 if (!priceClean.isEmpty()) {
-                    subtotal += Double.parseDouble(priceClean) * p.getQuantity();
+                    subtotal += (Double.parseDouble(priceClean) * p.getQuantity());
                 }
             }
             return subtotal >= 500000;

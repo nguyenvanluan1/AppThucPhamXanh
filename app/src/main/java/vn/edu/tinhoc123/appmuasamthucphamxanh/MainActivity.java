@@ -14,7 +14,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import java.util.List;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
     public static MainActivity instance;
@@ -30,21 +30,23 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        com.google.firebase.FirebaseApp.initializeApp(this);
         instance = this;
         setContentView(R.layout.activity_main);
-
         initViews();
         setupRecyclerViews();
         setupBottomNavigation();
         setupHeaderClicks();
         setupCategoryClicks();
         setupMostPurchasedClicks();
+        updateVoucherUI();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         updateCartBadge();
+        updateVoucherUI();
     }
 
     private void initViews() {
@@ -66,6 +68,42 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void setupBottomNavigation() {
+        bottomNavigation.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
+            FirebaseAuth mAuth = FirebaseAuth.getInstance();
+
+            if (id == R.id.nav_home) return true;
+            if (id == R.id.nav_offers) {
+                if (mAuth.getCurrentUser() != null) {
+                    startActivity(new Intent(MainActivity.this, VoucherActivity.class));
+                } else {
+                    Toast.makeText(this, "Vui lòng đăng nhập!", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                }
+                return true;
+            }
+            if (id == R.id.nav_orders) {
+                if (mAuth.getCurrentUser() != null) {
+                    startActivity(new Intent(MainActivity.this, OrderHistoryActivity.class));
+                } else {
+                    Toast.makeText(this, "Vui lòng đăng nhập!", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                }
+                return true;
+            }
+            if (id == R.id.nav_profile) {
+                if (mAuth.getCurrentUser() != null) {
+                    startActivity(new Intent(MainActivity.this, ProfileActivity.class));
+                } else {
+                    Toast.makeText(this, "Vui lòng đăng nhập!", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                }
+                return true;
+            }
+            return false;
+        });
+    }
     private void setupMostPurchasedClicks() {
         findViewById(R.id.btnRauCuNhieuNhat).setOnClickListener(v -> handleMostPurchased("Rau, củ"));
         findViewById(R.id.btnHoaQuaNhieuNhat).setOnClickListener(v -> handleMostPurchased("Hoa quả"));
@@ -74,30 +112,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void handleMostPurchased(String category) {
-        List<Product> listMost = OrderManager.getInstance().getMostPurchasedProductsByCategory(category);
-        if (listMost.isEmpty()) {
-            Toast.makeText(this, "Chưa có sản phẩm nào mua từ 3 lần trở lên!", Toast.LENGTH_SHORT).show();
-        } else {
-            Intent intent = new Intent(this, CategoryDetailActivity.class);
-            CategoryDetailActivity.mostPurchasedList = listMost;
-            startActivity(intent);
-        }
+        Intent intent = new Intent(this, TopProductActivity.class);
+        intent.putExtra("CATEGORY_KEY", category);
+        startActivity(intent);
     }
 
     private void updateCartBadge() {
         int count = CartManager.getInstance().getCartItems().size();
         if (txtCartBadge != null) {
-            if (count > 0) {
-                txtCartBadge.setText(String.valueOf(count));
-                txtCartBadge.setVisibility(View.VISIBLE);
-            } else {
-                txtCartBadge.setVisibility(View.GONE);
-            }
+            txtCartBadge.setVisibility(count > 0 ? View.VISIBLE : View.GONE);
+            if (count > 0) txtCartBadge.setText(String.valueOf(count));
         }
     }
 
     private void setupHeaderClicks() {
-        btnMenu.setOnClickListener(v -> Toast.makeText(this, "Menu tùy chọn", Toast.LENGTH_SHORT).show());
         btnSearch.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, SearchActivity.class)));
         btnCart.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, CartActivity.class)));
     }
@@ -122,20 +150,13 @@ public class MainActivity extends AppCompatActivity {
         rcvFoods.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
     }
 
-    private void setupBottomNavigation() {
-        bottomNavigation.setOnItemSelectedListener(item -> {
-            int id = item.getItemId();
-            if (id == R.id.nav_home) return true;
-            if (id == R.id.nav_offers) {
-                startActivity(new Intent(MainActivity.this, VoucherActivity.class));
-                return true;
-            }
-            if (id == R.id.nav_orders) {
-                startActivity(new Intent(MainActivity.this, OrderHistoryActivity.class));
-                return true;
-            }
-            return false;
-        });
+    private void updateVoucherUI() {
+        View voucherItem = bottomNavigation.findViewById(R.id.nav_offers);
+        if (voucherItem != null) {
+            boolean isLogged = FirebaseAuth.getInstance().getCurrentUser() != null;
+            voucherItem.setAlpha(isLogged ? 1.0f : 0.3f);
+            voucherItem.setEnabled(isLogged);
+        }
     }
 
     public void showAddToCartToast() {

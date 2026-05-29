@@ -26,7 +26,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         this.isCartScreen = isCartScreen;
         this.cartChangedListener = listener;
     }
-
+    public ProductAdapter(List<Product> productList) {
+        this.productList = productList;
+        this.isCartScreen = false;
+        this.cartListener = null;
+        this.cartChangedListener = null;
+    }
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
