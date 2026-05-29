@@ -47,6 +47,15 @@
 ---
 <img width="355" height="762" alt="image" src="https://github.com/user-attachments/assets/8784f305-e1c1-4a89-8b04-f84a8b46add7" />
 
+## Các Button danh sách mua nhiều nhất phân loại theo từng sản phẩm
+---
+<img width="356" height="564" alt="image" src="https://github.com/user-attachments/assets/167655b3-a7b5-4123-b6ae-b40b52e274f2" />
+<img width="355" height="577" alt="image" src="https://github.com/user-attachments/assets/75fa38c0-90d6-4574-9920-2eedee5e15bc" />
+<img width="350" height="621" alt="image" src="https://github.com/user-attachments/assets/f3d9f46b-615a-4854-b1d1-1e43372a66ac" />
+<img width="362" height="614" alt="image" src="https://github.com/user-attachments/assets/10458355-d5e1-49ff-a3b2-38cdd89d7c63" />
+
+
+
 
 ## Tính Năng Nổi Bật
 
