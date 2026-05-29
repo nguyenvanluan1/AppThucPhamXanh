@@ -55,11 +55,13 @@
 <img width="362" height="614" alt="image" src="https://github.com/user-attachments/assets/10458355-d5e1-49ff-a3b2-38cdd89d7c63" />
 
 ## Giao diện đăng nhập, đăng ký trong mục cá nhân
+---
 <img width="372" height="788" alt="image" src="https://github.com/user-attachments/assets/2b294501-6bae-4aaf-885a-1ec28e206085" />
 <img width="364" height="652" alt="image" src="https://github.com/user-attachments/assets/d8a9e5ad-d5da-415c-9de1-66e990a109f8" />
 
-
-
+## Liên kết Firebase để đăng nhập/ đăng ký và lưu trữ thông tin khách hàng
+---
+<img width="1438" height="564" alt="image" src="https://github.com/user-attachments/assets/f37c2006-d41a-4f27-9914-ec2d7e0eb1e6" />
 
 ## Tính Năng Nổi Bật
 
