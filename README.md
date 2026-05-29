@@ -3,20 +3,60 @@
 Ứng dụng di động hỗ trợ người dùng mua sắm thực phẩm tươi sống, rau củ quả, thịt cá và đồ ăn sẵn một cách tiện lợi và nhanh chóng. Dự án được phát triển trên nền tảng Android Studio.
 
 ---
-
 ## Giao Diện Ứng Dụng
-
 ---
 <img width="361" height="761" alt="image" src="https://github.com/user-attachments/assets/40b55dd0-1b93-42c2-b890-ac135597b1d2" />
-<img width="350" height="759" alt="image" src="https://github.com/user-attachments/assets/3e0af907-af7a-4de6-9043-8cdf5dee949a" />
-<img width="362" height="755" alt="image" src="https://github.com/user-attachments/assets/39056898-2ac9-45ea-9da8-233dbbccfc23" />
-<img width="357" height="760" alt="image" src="https://github.com/user-attachments/assets/704be5bd-b475-48af-83df-deefcd1f7d36" />
-<img width="360" height="754" alt="image" src="https://github.com/user-attachments/assets/8568c69d-0a37-4a23-ba6a-d8bc563e5f3c" />
-<img width="359" height="754" alt="image" src="https://github.com/user-attachments/assets/be33515d-3126-475b-a6fd-ad0fb3071eee" />
-<img width="355" height="761" alt="image" src="https://github.com/user-attachments/assets/07c93a76-3dba-4502-9d8b-30b9b4c4dc07" />
-<img width="369" height="787" alt="image" src="https://github.com/user-attachments/assets/30f4d826-cf26-4c54-82a4-720270243ea1" />
-<img width="363" height="758" alt="image" src="https://github.com/user-attachments/assets/21f0f30d-5839-4810-9486-642b12f55e80" />
 
+## Giao Diện tìm kiếm
+---
+<img width="367" height="754" alt="image" src="https://github.com/user-attachments/assets/9e427938-5fbe-4949-930a-f2076a7f233e" />
+
+## Giao Diện giỏ hàng
+---
+<img width="358" height="758" alt="image" src="https://github.com/user-attachments/assets/ec5e9094-e04f-4ef3-9237-5d68565454ee" />
+
+## Giao Diện giỏ hàng - Ưu đãi
+---
+<img width="358" height="773" alt="image" src="https://github.com/user-attachments/assets/66ebc0cc-bc1a-408f-a0b8-a40aeb4cc73f" />
+
+## Giao diện Rau, củ
+---
+<img width="357" height="760" alt="image" src="https://github.com/user-attachments/assets/704be5bd-b475-48af-83df-deefcd1f7d36" />
+
+## Giao diện Hoa Quả
+---
+<img width="360" height="754" alt="image" src="https://github.com/user-attachments/assets/8568c69d-0a37-4a23-ba6a-d8bc563e5f3c" />
+
+## Giao diện Thịt, Cá
+---
+<img width="359" height="754" alt="image" src="https://github.com/user-attachments/assets/be33515d-3126-475b-a6fd-ad0fb3071eee" />
+
+## Giao diện Đồ ăn
+---
+<img width="355" height="761" alt="image" src="https://github.com/user-attachments/assets/07c93a76-3dba-4502-9d8b-30b9b4c4dc07" />
+
+## Giao diện Ưu đãi
+---
+<img width="369" height="787" alt="image" src="https://github.com/user-attachments/assets/30f4d826-cf26-4c54-82a4-720270243ea1" />
+
+## Giao diện Đơn Hàng
+---
+<img width="363" height="566" alt="image" src="https://github.com/user-attachments/assets/338a4e7c-0c36-4b2f-ac6c-30957662660d" />
+
+## Giao diện Chi tiết đơn hàng
+---
+<img width="355" height="762" alt="image" src="https://github.com/user-attachments/assets/8784f305-e1c1-4a89-8b04-f84a8b46add7" />
+
+## Các Button danh sách mua nhiều nhất phân loại theo từng sản phẩm
+---
+<img width="356" height="564" alt="image" src="https://github.com/user-attachments/assets/167655b3-a7b5-4123-b6ae-b40b52e274f2" />
+<img width="355" height="577" alt="image" src="https://github.com/user-attachments/assets/75fa38c0-90d6-4574-9920-2eedee5e15bc" />
+<img width="350" height="621" alt="image" src="https://github.com/user-attachments/assets/f3d9f46b-615a-4854-b1d1-1e43372a66ac" />
+<img width="362" height="614" alt="image" src="https://github.com/user-attachments/assets/10458355-d5e1-49ff-a3b2-38cdd89d7c63" />
+
+## Giao diện đăng nhập, đăng ký trong mục cá nhân
+<img width="372" height="788" alt="image" src="https://github.com/user-attachments/assets/2b294501-6bae-4aaf-885a-1ec28e206085" />
+<img width="364" height="652" alt="image" src="https://github.com/user-attachments/assets/d8a9e5ad-d5da-415c-9de1-66e990a109f8" />
 
 
 
