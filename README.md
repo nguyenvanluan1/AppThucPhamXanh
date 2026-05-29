@@ -54,6 +54,10 @@
 <img width="350" height="621" alt="image" src="https://github.com/user-attachments/assets/f3d9f46b-615a-4854-b1d1-1e43372a66ac" />
 <img width="362" height="614" alt="image" src="https://github.com/user-attachments/assets/10458355-d5e1-49ff-a3b2-38cdd89d7c63" />
 
+## Giao diện đăng nhập, đăng ký trong mục cá nhân
+<img width="372" height="788" alt="image" src="https://github.com/user-attachments/assets/2b294501-6bae-4aaf-885a-1ec28e206085" />
+<img width="364" height="652" alt="image" src="https://github.com/user-attachments/assets/d8a9e5ad-d5da-415c-9de1-66e990a109f8" />
+
 
 
 
