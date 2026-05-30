@@ -33,6 +33,10 @@ public class MainActivity extends AppCompatActivity {
         com.google.firebase.FirebaseApp.initializeApp(this);
         instance = this;
         setContentView(R.layout.activity_main);
+        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+            String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+            CartManager.getInstance().setUserSession(uid);
+        }
         initViews();
         setupRecyclerViews();
         setupBottomNavigation();

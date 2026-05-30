@@ -46,6 +46,9 @@ public class LoginActivity extends AppCompatActivity {
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
+                        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                        CartManager.getInstance().setUserSession(uid); // Gán session ở đây
+
                         Toast.makeText(this, "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
                         finish();

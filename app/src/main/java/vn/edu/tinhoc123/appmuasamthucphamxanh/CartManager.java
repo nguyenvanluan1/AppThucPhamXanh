@@ -6,7 +6,7 @@ import java.util.List;
 public class CartManager {
     private static CartManager instance;
     private List<Product> cartItems = new ArrayList<>();
-
+    private String currentUserId = "GUEST";
     private double discount = 0;
 
     public interface CartUpdateListener {
@@ -19,6 +19,20 @@ public class CartManager {
     public static CartManager getInstance() {
         if (instance == null) instance = new CartManager();
         return instance;
+    }
+
+    public void setUserSession(String userId) {
+        if (!this.currentUserId.equals(userId)) {
+            this.currentUserId = userId;
+            this.cartItems.clear();
+            this.discount = 0;
+            if (listener != null) listener.onUpdate(0);
+        }
+    }
+
+    public void clearSession() {
+        this.currentUserId = "GUEST";
+        clearCart();
     }
 
     public void setListener(CartUpdateListener listener) {
@@ -51,6 +65,7 @@ public class CartManager {
 
         if (!found) {
             Product newP = new Product(p.getName(), p.getCategory(), p.getPrice(), p.getImageRes());
+            newP.setQuantity(1);
             cartItems.add(newP);
         }
 
@@ -65,6 +80,7 @@ public class CartManager {
     public List<Product> getCartItems() { return cartItems; }
 
     public double getDiscount() { return discount; }
+
     public boolean hasProductInCategory(String category) {
         for (Product p : cartItems) {
             if (p.getCategory().equalsIgnoreCase(category)) {
@@ -73,6 +89,7 @@ public class CartManager {
         }
         return false;
     }
+
     public double getSubtotal() {
         double total = 0;
         for (Product p : cartItems) {
@@ -82,28 +99,9 @@ public class CartManager {
         return total;
     }
 
-    public boolean isVoucherValid(String voucherName) {
-        double currentTotal = getSubtotal();
-
-        if (currentTotal == 0) return false;
-
-        if (voucherName.contains("500k")) {
-            return currentTotal >= 500000;
-        }
-
-        if (voucherName.contains("rau củ")) return hasProductInCategory("Rau, củ");
-        if (voucherName.contains("thịt")) return hasProductInCategory("Thịt, Cá");
-
-        return true;
-    }
     public void clearCart() {
         cartItems.clear();
         applyDiscount(0);
-    }
-    public void setCartItems(List<Product> newItems) {
-        this.cartItems = newItems;
-        if (listener != null) {
-            listener.onUpdate(cartItems.size());
-        }
+        if (listener != null) listener.onUpdate(0);
     }
 }

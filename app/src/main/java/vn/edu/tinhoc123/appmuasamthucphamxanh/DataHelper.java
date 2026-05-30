@@ -25,15 +25,23 @@ public class DataHelper {
             allProducts.add(new Product("Nho", "Hoa quả", "30.000đ", R.drawable.nho));
             allProducts.add(new Product("Chuối", "Hoa quả", "20.000đ", R.drawable.chuoi));
             allProducts.add(new Product("Mận", "Hoa quả", "50.000đ", R.drawable.man));
+            allProducts.add(new Product("Bơ", "Hoa quả", "25.000đ", R.drawable.bo));
+            allProducts.add(new Product("Ổi", "Hoa quả", "18.000đ", R.drawable.oi));
 
 
             allProducts.add(new Product("Thịt bò", "Thịt, Cá", "150.000đ", R.drawable.thit));
             allProducts.add(new Product("Cá liệt", "Thịt, Cá", "50.000đ", R.drawable.caliet));
             allProducts.add(new Product("Thịt gà", "Thịt, Cá", "150.000đ", R.drawable.thitga));
+            allProducts.add(new Product("Thịt Heo", "Thịt, Cá", "150.000đ", R.drawable.thitheo));
+            allProducts.add(new Product("Cá dò", "Thịt, Cá", "150.000đ", R.drawable.cado));
+
+
 
             allProducts.add(new Product("Cá viên chiên", "Đồ ăn", "30.000đ", R.drawable.cavienchien));
             allProducts.add(new Product("Lạp xưởng nướng đá", "Đồ ăn", "15.000đ", R.drawable.lapxuong));
-            allProducts.add(new Product("Trà sữa socola", "Đồ ", "25.000đ", R.drawable.trasua));
+            allProducts.add(new Product("Trà sữa socola", "Đồ ăn", "25.000đ", R.drawable.trasua));
+            allProducts.add(new Product("Pizza", "Đồ ăn", "65.000đ", R.drawable.pizza));
+            allProducts.add(new Product("Hotdog", "Đồ ăn", "25.000đ", R.drawable.hotdog));
 
         }
         return allProducts;

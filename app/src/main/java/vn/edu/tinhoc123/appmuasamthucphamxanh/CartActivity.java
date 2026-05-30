@@ -183,8 +183,9 @@ public class CartActivity extends AppCompatActivity {
             double finalTotal = Math.max(0, subtotal - CartManager.getInstance().getDiscount());
 
             java.util.Map<String, Object> orderMap = new java.util.HashMap<>();
-            orderMap.put("orderId", OrderManager.getInstance().generateOrderId());
-            orderMap.put("status", "Đang xử lý");
+            String uniqueOrderId = "DH" + System.currentTimeMillis();
+            orderMap.put("orderId", uniqueOrderId);
+            orderMap.put("status", "Đang vận chuyển");
             orderMap.put("totalAmount", finalTotal);
 
             java.util.Map<String, Product> itemsMap = new java.util.HashMap<>();
@@ -208,7 +209,7 @@ public class CartActivity extends AppCompatActivity {
                     .setValue(orderMap)
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
-                            CartManager.getInstance().setCartItems(remainingItems);
+                            CartManager.getInstance().clearCart();
                             CartManager.getInstance().applyDiscount(0);
                             Toast.makeText(this, "Đặt hàng thành công!", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(this, OrderHistoryActivity.class));
