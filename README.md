@@ -63,7 +63,7 @@
 ---
 <img width="1438" height="564" alt="image" src="https://github.com/user-attachments/assets/f37c2006-d41a-4f27-9914-ec2d7e0eb1e6" />
 
-## Tài khoản đăng nhập: kh1@gmail.com password: luan123
+## Tài khoản đăng nhập: kh1@gmail.com password: luan123(Có thể đăng ký account mới với form như đăng nhập email)
 ---
 <img width="1107" height="244" alt="image" src="https://github.com/user-attachments/assets/19a32bf8-a621-460c-a620-aa44901f3696" />
 
